@@ -33,5 +33,42 @@ module.exports = function(sequelize, Sequelize) {
         });
     }
 
+    Users.getUsersByUsername = async function(username) {
+        return this.findAll({
+            where: {
+                username: {$like: "%" + username + "%" }
+            }
+        });
+    }
+
+    Users.insert = async function(email, username, password) {
+        const user = {
+            email: email,
+            username: username,
+            password: password
+        };
+
+        return await this.create(user);
+    }
+
+    Users.updateUser = async function (user_id, email, username, profilePictureLink) {
+        const updateUserValues = {
+            email:email,
+            username: username,
+            profilePictureLink: profilePictureLink
+        }
+
+        const t = await sequelize.transaction();
+        const currentUser = await Users.findOne ({
+            where: {
+                user_id: user_id
+            }
+        }, {transaction: t});
+
+        const updatedUser = await currentUser.updateAttributes(updateUserValues, { transaction: t});
+        t.commit();
+        return updatedUser;
+    }
+
     return Users;
 }

@@ -12,9 +12,10 @@ App.use(BodyParser.urlencoded({ extended: true}));
 App.use(BodyParser.json());
 
 require("./routers/user-router.js")(App);
-//require("./routers/users-router.js")(App);
+require("./routers/users-router.js")(App);
+require("./routers/course-router.js")(App);
 
-Models.sequelizeCredentials.sync({ force: false}).then(() => {
+Models.sequelizeCredentials.sync({ force: true }).then(() => {
     startScript.startScript();
 
     App.listen(11000, () => {

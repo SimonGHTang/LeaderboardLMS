@@ -14,3 +14,24 @@ exports.getUser = function(req, res) {
         }
     });
 };
+
+exports.updateUser = function ( req, res) {
+    const user_id = parseInt(req.params.user_id, 10);
+    const email = req.body.email;
+    const username = req.body.username;
+    const profilePictureLink = req.body.profilePictureLink;
+
+    if(!email) {
+        Responses.fail(res, "Email cannot be empty", null);
+    } else if (!username) {
+        Responses.fail (res, "Username cannot be empty", null);
+    }
+
+    Models.Users.updateUser(user_id, email, username, profilePictureLink).then(function(user) {
+        if(!user) {
+            Responses.fail(res, "Profile update failed", null);
+        } else {
+            Responses.success(res, "Profile updated",  user);
+        }
+    });
+};

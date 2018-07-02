@@ -28,5 +28,6 @@ db.sequelizeCredentials = sequelizeCredentials;
 db.Sequelize = Sequelize;
 
 db.Users = require("./users")(sequelizeCredentials, Sequelize);
+db.Courses = require("./courses")(sequelizeCredentials, Sequelize);
 
 module.exports = db;
