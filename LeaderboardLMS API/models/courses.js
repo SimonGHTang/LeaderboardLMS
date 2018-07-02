@@ -23,6 +23,16 @@ module.exports = function (sequelize, Sequelize) {
         pictureLink: {
             type: Sequelize.STRING,
             defaultValue: "https://image.freepik.com/free-icon/electronic-circular-printed-circuit_318-50817.jpg"
+        },
+
+        allowInvitations: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: false
+        },
+
+        isActive: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: true
         }
 
     }, {underscored: true });
@@ -33,12 +43,29 @@ module.exports = function (sequelize, Sequelize) {
         });
     };
 
-    Courses.updateCourse = async function(course_id, name, description, coordinator, pictureLink) {
+    Courses.getCourseIncludingUsers = async function(course_id, models) {
+        return await this.findOne ({
+            where: { course_id: course_id },
+            include: [
+                {
+                    model: models.Users,
+                    attributes: ["user_id", "username", "email", "profilePictureLink"],
+                    require: false,
+                    through: {
+                        attributes: ["id", "rank", "user_id", "course_id", "created_at"]
+                    }
+                }
+            ]
+        });
+    };
+
+    Courses.updateCourse = async function(course_id, name, description, coordinator, pictureLink, allowInvitations) {
         const updateCourseValues = {
             name: name,
             description: description,
             coordinator: coordinator,
-            pictureLink: pictureLink
+            pictureLink: pictureLink,
+            allowInvitations: allowInvitations
         }
 
         const t = await sequelize.transaction();

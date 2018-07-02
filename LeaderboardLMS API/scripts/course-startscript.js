@@ -6,7 +6,7 @@ module.exports.startScript = function() {
         description: "Introductory programming course",
         coordinator: "Dong Yuan",
         pictureLink: "http://logodatabases.com/wp-content/uploads/2012/03/java-logo-wallpaper.jpg",
-        //allowInvitations: true
+        allowInvitations: true
     };
 
     courseList.course002 = {
@@ -14,7 +14,7 @@ module.exports.startScript = function() {
         description: "Data Structures",
         coordinator: "Dong Yuan",
         pictureLink: "https://pbs.twimg.com/profile_images/943919605814214656/3-UIm1if_400x400.jpg",
-        //allowInvitations: true
+        allowInvitations: true
     };
 
     return courseList;

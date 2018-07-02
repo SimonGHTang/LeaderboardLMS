@@ -29,5 +29,17 @@ db.Sequelize = Sequelize;
 
 db.Users = require("./users")(sequelizeCredentials, Sequelize);
 db.Courses = require("./courses")(sequelizeCredentials, Sequelize);
+db.Roles = require("./roles")(sequelizeCredentials, Sequelize);
+db.Invitations = require("./invitations")(sequelizeCredentials, Sequelize);
+
+db.Roles.belongsTo(db.Users, {foreignKey: "user_id"});
+db.Roles.belongsTo(db.Courses, {foreignKey: "course_id"});
+db.Courses.belongsToMany(db.Users, { through: "Roles" });
+db.Users.belongsToMany(db.Courses, { through: "Roles" });
+db.Courses.hasMany(db.Roles);
+db.Users.hasMany(db.Roles);
+
+db.Courses.hasMany(db.Invitations);
+db.Invitations.belongsTo(db.Courses, {foreignKey: "course_id" });
 
 module.exports = db;
