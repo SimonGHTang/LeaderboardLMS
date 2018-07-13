@@ -43,6 +43,18 @@ module.exports = function (sequelize, Sequelize) {
         });
     };
 
+    Courses.getCourseIncludingUser = async function (course_id, user_id, email, models) {
+        return await this.findOne({
+            where: {course_id: course_id },
+            include: [
+                {
+                    model: models.Users,
+                    where: Sequelize.or({ user_id: user_id }, { email: email }),
+                }
+            ]
+        });
+    };
+ 
     Courses.getCourseIncludingUsers = async function(course_id, models) {
         return await this.findOne ({
             where: { course_id: course_id },
@@ -57,6 +69,42 @@ module.exports = function (sequelize, Sequelize) {
                 }
             ]
         });
+    };
+
+    Courses.getCourseIncludingUsersAndRank = async function(course_id, rank, models) {
+        return await this.findAll ({
+            where: { course_id: course_id },
+            include: [
+                {
+                    model: models.Users,
+                    attributes: ["user_id", "username", "email", "profilePictureLink"],
+                    require: false,
+                    through: {
+                        attributes: ["id", "rank", "user_id", "course_id", "created_at"],
+                        where: { rank: rank }
+                    }
+                }
+            ]
+        });
+    };
+
+    Courses.setUserAsAdmin = async function(course_id, user_id, models) {
+        const user = await models.Users.findOne({
+            where: { user_id: user_id }
+        });
+
+        if(!user) { return null; }
+
+        const role = await models.Roles.findOne({
+            where: {
+                user_id: user_id,
+                course_id: course_id
+            }
+        });
+        if(!role) { return null; }
+
+        await role.updateAttributes({ rank: "admin" });
+        return await this.findOne({ where: { course_id: course_id }});
     };
 
     Courses.updateCourse = async function(course_id, name, description, coordinator, pictureLink, allowInvitations) {

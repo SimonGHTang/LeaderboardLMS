@@ -16,7 +16,7 @@ module.exports.startScript = function() {
     roleList.user002course001 = {
         user_id: 2,
         course_id: 1,
-        rank: "student"
+        rank: "admin"
     };
 
     roleList.user002course002 = {

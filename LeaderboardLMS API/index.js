@@ -7,15 +7,17 @@ const App = Express();
 
 const startScript = require("./scripts/master-startscript.js");
 const Models = require("./models");
+const AuthenticationService = require("./middleware/authentication-service.js");
 
 App.use(Session({ secret: "secret_seed", resave:false, saveUninitialized: false, secure: false, rolling: true }));
 App.use(Passport.initialize());
 App.use(Passport.session());
 App.use(BodyParser.urlencoded({ extended: true}));
 App.use(BodyParser.json());
+App.use(AuthenticationService.isPublicPage);
 
-//require("./routers/authentication-router.js")(App, Passport);
-//require("./passport/passport.js")(Passport, Models.Users);
+require("./routers/authentication-router.js")(App, Passport);
+require("./passport/passport.js")(Passport, Models.Users);
 
 require("./routers/user-router.js")(App);
 require("./routers/users-router.js")(App);

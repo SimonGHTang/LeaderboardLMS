@@ -33,11 +33,45 @@ module.exports = function(sequelize, Sequelize) {
         });
     }
 
+    Users.getUserIncludingPassword = async function(user_id, email, models) {
+        if(isNaN(user_id)){ user_id = -1; }
+
+        return await this.findOne({
+            where: Sequelize.or({ user_id : user_id }, { email: email })
+        });
+    }
+
     Users.getUsersByUsername = async function(username) {
         return this.findAll({
             where: {
                 username: {$like: "%" + username + "%" }
             }
+        });
+    }
+
+    Users.getUserIncludingCourse = async function(user_id, email, course_id, models) {
+        if(isNaN(user_id)){ user_id = -1; }
+
+        return await this.findOne({
+            where: Sequelize.or({ user_id: user_id }, { email: email }),
+            include: [
+                {
+                    model: models.Courses,
+                    required: false,
+                    where: {course_id: course_id }
+                }
+            ]
+        });
+    }
+
+    Users.getUserIncludingCourses = async function(user_id, email, models) {
+        if(isNaN(user_id)){ user_id = -1; }
+
+        return await this.findOne({
+            where: Sequelize.or({ user_id: user_id }, { email: email }),
+            include: [
+                { model: models.Courses }
+            ]
         });
     }
 
