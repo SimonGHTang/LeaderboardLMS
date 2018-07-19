@@ -24,6 +24,10 @@ require("./routers/users-router.js")(App);
 require("./routers/course-router.js")(App);
 require("./routers/invitation-router.js")(App);
 require("./routers/invitations-router.js")(App);
+require("./routers/leaderboard-router.js")(App);
+require("./routers/rankings-router.js")(App);
+require("./routers/ranking-sections-router.js")(App);
+require("./routers/ranking-section-entries-router.js")(App);
 
 Models.sequelizeCredentials.sync({ force: true }).then(() => {
     startScript.startScript();

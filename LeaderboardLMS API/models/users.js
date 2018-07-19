@@ -87,16 +87,14 @@ module.exports = function(sequelize, Sequelize) {
 
     Users.updateUser = async function (user_id, email, username, profilePictureLink) {
         const updateUserValues = {
-            email:email,
+            email: email,
             username: username,
             profilePictureLink: profilePictureLink
         }
 
         const t = await sequelize.transaction();
         const currentUser = await Users.findOne ({
-            where: {
-                user_id: user_id
-            }
+            where: { user_id: user_id }
         }, {transaction: t});
 
         const updatedUser = await currentUser.updateAttributes(updateUserValues, { transaction: t});
