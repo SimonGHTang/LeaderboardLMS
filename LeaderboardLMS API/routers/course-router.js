@@ -8,8 +8,11 @@ module.exports = function(app) {
     app.get("/course/:course_id/students", AuthenticationService.isStudentOrAdminForCourse, CourseController.getCourseIncludingStudents);
     app.get("/course/:course_id/user/:term", AuthenticationService.isAdminForCourse, CourseController.getCourseIncludingUser);
     
-    app.put("/course/:course_id/admin/:user_id", AuthenticationService.isAdminForCourse, CourseController.setUserAsAdmin);
+    app.put("/course", AuthenticationService.isLoggedIn, CourseController.insertCourse);
     
     app.post("/course/:course_id", AuthenticationService.isAdminForCourse, CourseController.updateCourse);
+    app.post("/course/:course_id/admin/:user_id", AuthenticationService.isAdminForCourse, CourseController.setUserAsAdmin);
+    app.post("/course/:course_id/student/:user_id", AuthenticationService.isAdminForCourse, CourseController.setUserAsStudent);
 
+    app.delete("/course/:course_id/user/:user_id", AuthenticationService.isAdminForCourse, CourseController.kickUser);
 }

@@ -20,7 +20,7 @@ exports.getUserIncludingCourses = function(req, res) {
     var user_id = parseInt(req.params.term, 10);
     user_id = isNaN(user_id) ? null : user_id;
 
-    Models.Users.getUserCourses(user_id, email, Models).then(function(user) {
+    Models.Users.getUserIncludingCourses(user_id, email, Models).then(function(user) {
         if(!user) {
             Responses.fail(res, "No user found", null);
         } else {

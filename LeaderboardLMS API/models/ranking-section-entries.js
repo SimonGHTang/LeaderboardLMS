@@ -44,14 +44,21 @@ module.exports = function(sequelize, Sequelize) {
             ranking_section_id: ranking_section_id
         };
 
-        
-        if( Models.Rankings.findOne({where:{ranking_id:ranking_id}}) && Models.RankingSections.findOne({where:{ranking_section_id:ranking_section_id}}) && Models.Users.findOne({where:{user_id:user_id}}) ) {
-            return await this.create(RankingSectionEntry);
-        }
+        var [ranking, rankingSection, user] = await Promise.all([
+            Models.Rankings.findOne({ 
+                where: { ranking_id: ranking_id }
+            }), 
+            Models.RankingSections.findOne({
+                where: { ranking_section_id: ranking_section_id }
+            }),
+            Models.Users.findOne({where: { user_id: user_id }}) 
+        ]);
 
+        if(ranking && rankingSection && user) {
+            return await Models.RankingSectionEntries.create(RankingSectionEntry);
+        }
+        
         return null;
-        // return await this.create(RankingSectionEntry);
-        // return await (Models.Rankings.findOne({where:{ranking_id:ranking_id}}) && Models.RankingSections.findOne({where:{ranking_section_id:ranking_section_id}}) && Models.Users.findOne({where:{user_id:user_id}}) ? this.create(RankingSectionEntry) : null)
     }
 
     RankingSectionEntries.deleteRankingSectionEntry = async function(ranking_section_entry_id) {
@@ -61,7 +68,6 @@ module.exports = function(sequelize, Sequelize) {
             }
         });
     }
-
-
+    
     return RankingSectionEntries;
 }

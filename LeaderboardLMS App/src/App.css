@@ -1,0 +1,512 @@
+
+.f-w-900{
+  font-weight:900
+}
+
+.f-w-800{
+  font-weight:800
+}
+
+.f-w-700{
+  font-weight:700
+}
+
+.f-w-600{
+  font-weight:600
+}
+
+.f-w-500{
+  font-weight:500
+}
+
+.f-w-400{
+  font-weight:400
+}
+
+.f-w-300{
+  font-weight:300
+}
+
+
+.width-100-percent{
+  width: 100%;
+}
+
+
+.width-100-percent-important{
+  width: 100% !important;
+}
+
+.header-logo{
+  max-height: 50px;
+  margin-left: 40px;   
+}
+
+.vertical-align-middle{
+  vertical-align: middle;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+
+.no-text-decoration{
+  text-decoration: none !important;
+}
+
+.infoWindowMarker{
+  height: 230px;
+  width: fit-content;
+  overflow-y: auto;
+}
+
+
+.black{
+  color: black;
+}
+
+.red{
+  color: #fd5c63;
+}
+
+.red-important{
+  color: #fd5c63 !important;
+}
+
+.green{
+  color: green;
+}
+
+.orange{
+  color: #ff851b;
+}
+
+.green-important{
+  color: green !important;
+}
+
+.landingMapHolder{
+  height : calc(100vh - 70px) !important;
+}
+
+
+.ui.card.hoverable-box-shadow-card{
+  box-shadow:none;
+  transition-duration: 0.2s;
+  margin: 0px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 0px;
+  width:95%;
+}
+
+.ui.card.hoverable-box-shadow-card:hover{
+  box-shadow: 0 3px 9px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  transition-duration: 0.2s;
+}
+
+.ui.card.payment-method-checkout-page{
+  width: 150px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow:0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5 ;
+  transition-duration: 0.2s;
+}
+
+.ui.card.payment-method-checkout-page:hover{
+  box-shadow: 0 3px 9px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  transition-duration: 0.2s;
+}
+
+.ui.card.payment-method-checkout-page>.image{
+  padding: 20px;
+  background:white;
+  max-height: 145px;
+}
+
+.ui.card.payment-method-checkout-page>.content>.header:not(.ui){
+  font-size:11px;
+}
+
+
+.ui.card.payment-method-checkout-page .meta{
+  font-size :11px;
+}
+
+.inlineBlock{
+  display:inline-block;
+}
+
+.relative{
+  position: relative;
+}
+
+.inputDescriptionSpan{
+  font-size: 13px;
+  font-weight:900;
+  margin-left: 3px;
+}
+
+.centered{
+  text-align: center;
+}
+
+.defaultCursor{
+  cursor: default;
+}
+
+.ui.labeled.button:not([class*="left labeled"])>.label{
+  font-size: 12px;
+}
+
+.ui.form.standardForm .field>label{
+  font-size: 1em !important;
+} 
+
+.ui.inverted.segment.infoBlock{
+  box-shadow: 0 0 0 1px #a9d5de inset, 0 0 0 0 transparent;
+  background-color: #f8ffff;
+  color: #276f86;
+}
+
+.text-centre {
+  text-align: center;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.intro-signup {
+  position: absolute;
+  top: 15vh;
+  left: 35%
+}
+
+.margin-top-small {
+  margin-top: 10px !important;
+}
+
+.intro-logo {
+  position: absolute;
+  top: 30vh;
+  left: 42%
+}
+
+.intro-form {
+  margin-top: 20px;
+}
+
+.intro-signing-up {
+  width: 300px;
+  display: inline-block;
+  margin-top: 15vh;
+  text-align: center;
+  transform: scale(1.2)
+}
+
+.intro-logging-in {
+  width: 300px;
+  display: inline-block;
+  margin-top: 30vh;
+  text-align: center;
+  transform: scale(1.2)
+}
+
+.intro-h4 {
+  font-weight: 900;
+  font-family: Lato;
+  color: green;
+  margin-top: 20px
+}
+
+.icon-group {
+  background:#21ba45;
+  padding: 10px;
+  border-radius: 999px
+}
+
+.absoluteBottomDiv{
+  /* margin-top: 32px; */
+  position: absolute;
+  width: 100%;
+  padding-right: 20px;
+  bottom: 0;
+  padding-bottom: 10px;
+}
+
+.hidden{
+  display: none;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box{
+  width:90px !important;
+}
+
+.react-datepicker__time-container--with-today-button{
+  right: -92px !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list{
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+
+.fullWidthDatePicker div.react-datepicker-wrapper{
+  width:100%;
+}
+
+.fullWidthDatePicker div.react-datepicker-wrapper .react-datepicker__input-container{
+  width:100%;
+}
+
+.leftHiddenSidebar{
+  width:400px;
+  transition-duration: 0.2s;
+  z-index: 9;
+  height: calc(100vh - 70px);
+  background:white;
+  position: absolute;
+  left:0;
+  top:70px;
+}
+
+.leftHiddenSidebar.hiddenSideBar{
+  transform: translateX(-400px);
+}
+
+.leftHiddenSidebar.openSideBar{
+  transform: translateX(0px);
+}
+
+::-webkit-scrollbar {
+  width: 3px !important;
+  max-height: 3px ;
+  background-color: #FFF;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(255,255,255); 
+  -webkit-border-radius: 0px;
+  border-radius:0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background: rgba(0,0,0,0.3); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgb(255,255,255); 
+}
+
+.appear{
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+.disappear{
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.white-color {
+  color: white
+}
+
+.header-banner{
+  background:white;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header-banner .ui.grid>.row{
+  margin-left: 10px;
+}
+
+.header-banner-icon{
+  font-size: 30px;
+  color: black;
+  margin-left: 10px;
+  transition-duration: 0.2s;
+}
+
+
+.header-banner-icon:hover{
+  color: rgba(0,0,0,0.5);
+  transition-duration: 0.2s;
+}
+
+.main{
+  right: 168px !important;
+}
+
+.course-menu{
+  background: #444649 !important;
+}
+
+.course-menu-category{
+  text-align: left;
+  color: #6a90c4 !important;
+  font-size: 12x;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer
+}
+
+.course-menu-category:hover{
+  color: #9ebbe5 !important;
+}
+
+
+.sub-menu{
+  text-align: left !important;
+  color: #b4b9c1 !important;
+  font-size: 15px !important;
+  cursor: pointer;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sub-menu:hover{
+  background-color: #4e5156 !important;
+}
+
+.leaderboard-menu{
+  text-align: left !important;
+  color: #b4b9c1 !important;
+  font-size: 14px !important;
+  cursor: pointer;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leaderboard-menu:hover{
+  font-weight: bold !important;
+  background-color: #4e5156 !important;
+}
+
+
+.forum-menu{
+  text-align: left !important;
+  color: #b4b9c1 !important;
+  font-size: 14px !important;
+  cursor: pointer;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.forum-menu:hover{
+  text-decoration: underline !important;
+  background-color: #4e5156 !important;
+}
+
+.download-menu{
+  text-align: left !important;
+  color: #b4b9c1 !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  font-family: Helvetica, sans-serif;
+  cursor: pointer;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.download-menu:hover{
+  background-color: #4e5156 !important;
+}
+
+.void {
+  display: none;
+}
+
+.user-profile-icon {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid grey;
+  border-top: 2px solid grey;
+}
+
+.selected-course {
+  background-color: #393e47;
+}
+
+.add-course-icon {
+  padding-top: 30px;
+  padding-left: 5px;
+  color: #4b5360;
+  font-size: 4.32em !important;
+  display: inline-block;
+  padding-bottom: 50px;
+}
+
+.course-info-menu {
+  text-align: left !important;
+  color: #b4b9c1 !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  font-family: Helvetica, sans-serif;
+  cursor: pointer;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-info-menu:hover{
+  background-color: #4e5156 !important;
+}
+
+.img-link{
+  word-wrap: break-word;
+}
+
+.avatar-list {
+  margin-right: 20px !important;
+}
+
+.avatar-list-text-padding {
+  padding-top: 18px !important;
+}
+
+.div-avatar-list {
+  padding-top: 5px !important;
+}
+
+.cursor-pointer {
+  cursor: pointer
+}
+
+.icon-blue {
+  color: #005c99;
+}
+
+.icon-red {
+  color: #e00000;
+}
+
+.teal-hover:hover {
+  color: #008080 !important;
+}
+
+.maroon-hover:hover {
+  color: #aa0000 !important;
+}
+
+.scrollable {
+  overflow-y: scroll;
+}

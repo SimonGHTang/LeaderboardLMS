@@ -1,4 +1,4 @@
-module.exports.startScript = function() {
+module.exports.startScript = function(){
     var roleList = {};
 
     roleList.user001course001 = {
@@ -16,7 +16,7 @@ module.exports.startScript = function() {
     roleList.user002course001 = {
         user_id: 2,
         course_id: 1,
-        rank: "admin"
+        rank: "student"
     };
 
     roleList.user002course002 = {
@@ -36,6 +36,24 @@ module.exports.startScript = function() {
         course_id: 1,
         rank: "student"
     };
+
+    roleList.user005course002 = {
+        user_id: 5,
+        course_id: 1,
+        rank: "student"
+    }
+
+    roleList.user006course002 = {
+        user_id: 6,
+        course_id: 2,
+        rank: "admin"
+    }
+
+    roleList.user006course002 = {
+        user_id: 6,
+        course_id: 1,
+        rank: "student"
+    }
 
     return roleList;
 }

@@ -10,19 +10,29 @@ module.exports = function(sequelize, Sequelize) {
         mark: {
             type: Sequelize.INTEGER,
             notEmpty: true
-        }
-    });
+        },
 
-    Rankings.getRanking = async function(ranking_id) {
+        note: {
+            type: Sequelize.STRING
+        }
+    }, {underscored: true});
+
+    Rankings.getRankingIncludingAnonymousSetting = async function(ranking_id, models) {
 
         return await this.findOne({
-            where: { ranking_id: ranking_id }
+            where: { ranking_id: ranking_id },
+            include: [
+                {model: models.RankingSecionEntires },
+                {model: models.AnonymitySettings },
+                {model: models.Users }
+            ]
         });
     }
 
-    Rankings.editRanking = async function(ranking_id, mark) {
+    Rankings.editRanking = async function(ranking_id, mark, note) {
         const updatedRankingValues = {
             mark: mark,
+            note: note
         }
 
         const t = await sequelize.transaction();
@@ -35,13 +45,34 @@ module.exports = function(sequelize, Sequelize) {
         return updatedRanking;
     }
 
-    Rankings.insertRanking = async function(leaderboard_id, mark) {
-        const Ranking = {
+    Rankings.insertRanking = async function(leaderboard_id, user_id, mark, note, models) {
+        const ranking = {
             mark: mark,
+            note: note,
+            user_id: user_id,
             leaderboard_id: leaderboard_id
         };
 
-        return await this.create(Ranking);
+        var newRanking = await this.create(ranking);
+
+        models.AnonymitySettings.insertAnonymitySetting(newRanking.id, false, false);
+
+        return await newRanking;
+    }
+
+    Rankings.deleteRanking = async function(ranking_id, models) {
+        const t = await sequelize.transaction();
+
+        await models.AnonymitySettings.destroy({
+            where: { ranking_id: ranking_id }
+        }, {transaction: t});
+
+        var numberOfRankingsDeleted = await this.destroy({
+            where: { ranking_id: ranking_id }
+        }, {transaction: t});
+        t.commit();
+
+        return numberOfRankingsDeleted;
     }
 
     return Rankings;

@@ -29,6 +29,37 @@ module.exports = function(sequelize, Sequelize) {
         });
     }
 
+    Leaderboards.getLeaderboardIncludingRankings = async function(leaderboard_id, models) {
+
+        return await this.findOne({
+            where: { leaderboard_id: leaderboard_id},
+            include: [
+                {
+                    model: models.Rankings,
+                    include: [
+                        { 
+                            model: models.AnonymitySettings 
+                        },
+                        {
+                            model: models.Users,
+                            attributes: [ "id", "email", "username", "profilePictureLink" ]
+                        },
+                        {
+                            model: models.RankingSectionEntries,
+                            attributes: [ "id", "mark", "ranking_section_id", "ranking_id" ]
+                        }
+                    ]
+                },  
+                {
+                    model: models.RankingSections
+                }
+            ],
+            order: [
+                [ models.Rankings, "mark", "DESC" ]
+            ]
+        });
+    }
+
     Leaderboards.editLeaderboard = async function(leaderboard_id, name, weighting, description) {
         const updatedLeaderboardValues = {
             name: name,

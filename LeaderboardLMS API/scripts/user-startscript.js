@@ -39,6 +39,33 @@ module.exports.startScript = function (){
         profilePictureLink: "http://www.isa.org.usyd.edu.au/homeimg/USYD_LOGO_New.jpg"
     };
 
+    userList.user005 = {
+        email: "asdf@gmail.com",
+        username: "Asdf Qwerty",
+        password: generateHash("24157817"),
+        status: "offline",
+        activation: "active",
+        profilePictureLink: "https://vignette.wikia.nocookie.net/casuallyexplained/images/1/19/Avatar.jpg/revision/latest/scale-to-width-down/150?cb=20171203035936"
+    }
+
+    userList.user006 = {
+        email: "darren@gmail.com",
+        username: "Darren",
+        password: generateHash("24157817"),
+        status: "offline",
+        activation: "active",
+        profilePictureLink: "https://images.techhive.com/images/article/2016/01/thinkstockphotos-481493125-100638928-large.jpg"
+    }
+
+    userList.user007 = {
+        email: "Brendan@gmail.com",
+        username: "BrendanT",
+        password: generateHash("24157817"),
+        status: "offline",
+        activation: "active",
+        profilePictureLink: "https://ih0.redbubble.net/image.387863594.5073/flat,800x800,075,f.jpg"
+    }
+
     return userList;
 };
 

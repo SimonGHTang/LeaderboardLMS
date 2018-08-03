@@ -50,18 +50,19 @@ exports.isCurrentUser = function(req, res, next) {
     });
 }
 
-exports.isStudentOrAdminForCourse = function(req, res, next) {
+exports.isStudentOrAdminForCourse = function(req, res, next){
     var course_id = parseInt(req.params.course_id, 10);
-    if(isNaN(course_id)){ Response.error(res, "Error authenticating. Course id is not a number", null); }
+    if (isNaN(course_id)){ Response.error(res, "Error authenticating. Course id is not a number", null); }
 
     Models.Users.getUserIncludingCourse(null, req.user.email, course_id, Models).then(function(user) {
         if(user.Courses.length === 0) { return Responses.fail(res, "You are not registered to this course", null); }
-        if(user.Courses[0].Roles.rank === "Student" || user.Courses[0].Roles.rank === "admin"){
+        if(user.Courses[0].Roles.rank === "student" || user.Courses[0].Roles.rank === "admin"){
             return next();
         } else {
             return Responses.fail(res, " You do not have permission to do this.", null);
         }
-    }).catch (e => {
+    }).catch( e => {
+        console.log(e)
         return Responses.error(res, "Error verifying your request", e);
     });
 }

@@ -58,8 +58,21 @@ module.exports = function(sequelize, Sequelize) {
                 {
                     model: models.Courses,
                     required: false,
-                    where: {course_id: course_id }
-                }
+                    where: { course_id: course_id }
+                }              
+            ]
+        });
+    }
+
+    Users.getUserIncludingCourseAndRole = async function(user_id, course_id, models){
+        return await this.findOne({
+            where: { user_id: user_id},
+            include: [
+                {
+                    model: models.Courses,
+                    where: { course_id: course_id }
+                },
+                { model: models.Roles }
             ]
         });
     }

@@ -35,6 +35,7 @@ db.Leaderboards = require("./leaderboards")(sequelizeCredentials, Sequelize);
 db.Rankings = require("./rankings")(sequelizeCredentials, Sequelize);
 db.RankingSections = require("./ranking-sections")(sequelizeCredentials, Sequelize);
 db.RankingSectionEntries = require("./ranking-section-entries")(sequelizeCredentials, Sequelize);
+db.AnonymitySettings = require("./anonymity-settings.js")(sequelizeCredentials, Sequelize);
 
 db.Roles.belongsTo(db.Users, {foreignKey: "user_id"});
 db.Roles.belongsTo(db.Courses, {foreignKey: "course_id"});
@@ -63,6 +64,9 @@ db.RankingSectionEntries.belongsTo(db.Users, {foreignKey: "user_id"});
 db.Users.hasMany(db.RankingSectionEntries);
 db.RankingSectionEntries.belongsTo(db.Rankings, {foreignKey: "ranking_id"});
 db.Rankings.hasMany(db.RankingSectionEntries);
+
+db.AnonymitySettings.belongsTo(db.Rankings, {foreignKey: "ranking_id"});
+db.Rankings.hasOne(db.AnonymitySettings);
 
 
 
