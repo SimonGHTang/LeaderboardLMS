@@ -103,7 +103,7 @@ export default class CourseModal extends React.Component{
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                    <DeleteCourseModal />
+                    <DeleteCourseModal course_id={this.props.course_id} course={this.state.course}/>
                     <CourseUpdateModal course_id={this.props.course_id} course={this.state.course} closeModal={this.closeModal} />
                     <Button onClick={this.closeModal} >Close</Button>
                 </Modal.Actions>

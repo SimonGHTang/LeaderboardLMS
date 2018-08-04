@@ -12,7 +12,7 @@ export default class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Signin} />
-        <Route path="/landing" render={(props) => <Landing /> } />
+        <Route path="/landing" component={Landing} />
         <Route path="/auth/signup/:invitation" component={Signup} />
         <Route path="/auth/signup" component={Signup} />
         <Route component={Signin} />

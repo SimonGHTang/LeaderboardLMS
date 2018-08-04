@@ -25,7 +25,7 @@ var invitation_api = {
         var url = api_domain + "/course/" + course_id + "/invitation";
 
         var req = {
-            method: "GET",
+            method: "PUT",
             headers: headers,
             credentials: "include"
         }
@@ -37,7 +37,7 @@ var invitation_api = {
         var url = api_domain + "/course/" + course_id + "/invitation/" + invitation_id;
 
         var req = {
-            method: "GET",
+            method: "DELETE",
             headers: headers,
             credentials: "include"
         }

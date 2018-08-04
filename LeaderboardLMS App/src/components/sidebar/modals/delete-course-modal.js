@@ -4,6 +4,14 @@ import {Modal, Button, Icon, Header} from "semantic-ui-react";
 import CourseAPI from "../../../services/course-services";
 
 export default class DeleteCourseModal extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+
+    delete_course() {
+        CourseAPI.delete_course();
+    }
+
     render() {
         return (
             <Modal

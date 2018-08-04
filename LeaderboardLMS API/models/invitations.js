@@ -10,7 +10,7 @@ module.exports = function(sequelize, Sequelize) {
         link: {
             type:Sequelize.STRING(12)
         }
-    }, { underscroed: true });
+    }, { underscored: true });
 
     Invitations.insert = async function(course_id) {
         var link = Math.random().toString(36).substring(3,12);

@@ -149,5 +149,17 @@ exports.insertCourse = function(req, res) {
         } else {
             Responses.success(res, "Course created", course);
         }
+    });
+}
+
+exports.deleteCourse = function(req, res) {
+    const course_id= req.params.course_id;
+
+    Models.Courses.deleteCourse(course_id, Models).then(function(course) {
+        if(!course) {
+            Responses.fail(res, "Cannot delete course at this time, try again?", null);
+        } else {
+            Responses.success(res, "Course deleted", course);
+        }
     })
 }

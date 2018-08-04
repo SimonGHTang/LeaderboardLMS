@@ -45,7 +45,7 @@ var course_api = {
         return fetch(url, req).then((res) => res.json());
     },
 
-    get_CourseIncludingStudent(course_id) {
+    get_CourseIncludingStudents(course_id) {
         var url = api_domain + "/course/" + course_id + "/students";
 
         var req = {
@@ -111,6 +111,17 @@ var course_api = {
         return fetch(url, req).then((res) => res.json());
     },
 
+    delete_course(course_id) {
+        var url = api_domain + "/course/" + course_id;
+
+        var req = {
+            method: "DELETE",
+            headers: headers,
+            credentials: "include"
+        }
+        return fetch(url, req).then((res) => res.json());
+    },
+
     post_setUserAsAdmin(course_id, user_id) {
         var url = api_domain + "/course/" + course_id + "/admin/" + user_id;
 
@@ -139,7 +150,7 @@ var course_api = {
         var url = api_domain + "/course/" + course_id + "/user/" + user_id;
 
         var req = {
-            method: "POST",
+            method: "DELETE",
             headers: headers,
             credentials: "include"
         }

@@ -14,5 +14,6 @@ module.exports = function(app) {
     app.post("/course/:course_id/admin/:user_id", AuthenticationService.isAdminForCourse, CourseController.setUserAsAdmin);
     app.post("/course/:course_id/student/:user_id", AuthenticationService.isAdminForCourse, CourseController.setUserAsStudent);
 
+    app.delete("/course/:course_id", AuthenticationService.isAdminForCourse, CourseController.deleteCourse);
     app.delete("/course/:course_id/user/:user_id", AuthenticationService.isAdminForCourse, CourseController.kickUser);
 }

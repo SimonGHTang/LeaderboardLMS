@@ -4,12 +4,13 @@ let domain = "http://localhost";
 let port = "11000";
 let api_domain = domain + ":" + port;
 
+let headers = {
+    "Content-Type": "application/json"
+};
+
 var authentication_api = {
     get_currentUser() {
         var url = api_domain + "/auth/user";
-        let headers = {
-            "Content-Type": "application/json"
-        };
 
         var req = {
             method: "GET",
@@ -22,9 +23,6 @@ var authentication_api = {
 
     get_signout() {
         var url = api_domain + "/auth/signout";
-        let headers = {
-            "Content-Type": "application/json"
-        }
 
         var req = {
             method: "GET",
@@ -37,9 +35,6 @@ var authentication_api = {
 
     get_signup(invitation) {
         var url = api_domain + "/auth/signup/" + invitation;
-        let headers = {
-            "Content-Type": "application/json"
-        };
 
         var req = {
             method: "GET",
@@ -52,9 +47,6 @@ var authentication_api = {
 
     put_signup(signupInfo, invitation) {
         var url = api_domain + "/auth/signup/" + invitation;
-        let headers = {
-            "Content-Type": "application/json"
-        };
 
         let body = {
             "email": signupInfo.email,
@@ -73,9 +65,6 @@ var authentication_api = {
 
     post_signin(signinInfo) {
         var url = api_domain + "/auth/signin";
-        let headers = {
-            "Content-Type": "application/json"
-        };
 
         let body = {
             "email": signinInfo.email,
