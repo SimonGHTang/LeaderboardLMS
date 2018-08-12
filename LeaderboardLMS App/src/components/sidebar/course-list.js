@@ -8,7 +8,7 @@ import CoursePopupInfo from "./popups/course-popup-info";
 
 export default class CourseList extends React.Component {
     constructor(props) {
-        super(props);
+        super();
 
         this.state = {
             selectedCourse: 0,

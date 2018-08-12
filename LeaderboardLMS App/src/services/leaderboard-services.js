@@ -9,7 +9,7 @@ let headers = {
 };
 
 var leaderboard_api = {
-    get_leaderboard(course_id, leaderbaord_id) {
+    get_leaderboard(course_id, leaderboard_id) {
         var url = api_domain + "/course/" + course_id + "/leaderboard/" + leaderboard_id;
 
         var req = {
@@ -40,7 +40,7 @@ var leaderboard_api = {
         return fetch(url, req).then((res) => res.json());
     },
 
-    post_leaderboard(course_id, leaderboard_id) {
+    post_leaderboard(course_id, leaderboard_id, leaderboardInfo) {
         var url = api_domain + "/course/" + course_id + "/leaderboard/" + leaderboard_id;
 
         var body = {

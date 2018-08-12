@@ -23,7 +23,7 @@ exports.getCourseIncludingUser = function (req, res) {
         if(!course) {
             Responses.fail(res, "There is no user here", null);
         } else {
-            Responses.success(res, "Info retrieval successful", course);
+            Responses.success(res, "Informationretrieval successful", course);
         }
     });
 };
@@ -36,7 +36,7 @@ exports.getCourseIncludingUsers = function (req, res) {
         if(!course) {
             Responses.fail(res, "Something is missing", null);
         } else {
-            Responses.success(res, "Info retrieval successful", course);
+            Responses.success(res, "Informationretrieval successful", course);
         }
     });
 };
@@ -49,7 +49,7 @@ exports.getCourseIncludingAdmins = function (req, res) {
         if(!course) {
             Responses.fail(res, "Course information could not be loaded", null);
         } else {
-            Responses.success(res, "Info retrival successful", course);
+            Responses.success(res, "Informationretrival successful", course);
         }
     });
 };
@@ -62,10 +62,22 @@ exports.getCourseIncludingStudents = function (req, res) {
         if(!course) {
             Responses.fail(res, "Course information could not be loaded", null);
         } else {
-            Responses.success(res, "Info retrival successful", course);
+            Responses.success(res, "Informationretrival successful", course);
         }
     });
 };
+
+exports.getCourseLeaderboards = function(req, res) {
+    const course_id = parseInt(req.params.course_id, 10);
+
+    Models.Courses.getCourseIncludingLeaderboards(course_id, Models).then(function(course) {
+        if(!course) {
+            Responses.fail(res, "Course leaderboard information could not be loaded", null);
+        } else {
+            Responses.success(res, "Informationretrival successful", course);
+        }
+    })
+}
 
 exports.setUserAsAdmin = function(req,res) {
     const course_id = parseInt(req.params.course_id, 10);

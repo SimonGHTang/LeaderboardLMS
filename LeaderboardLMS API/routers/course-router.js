@@ -7,6 +7,8 @@ module.exports = function(app) {
     app.get("/course/:course_id/admins", AuthenticationService.isStudentOrAdminForCourse, CourseController.getCourseIncludingAdmins);
     app.get("/course/:course_id/students", AuthenticationService.isStudentOrAdminForCourse, CourseController.getCourseIncludingStudents);
     app.get("/course/:course_id/user/:term", AuthenticationService.isAdminForCourse, CourseController.getCourseIncludingUser);
+
+    app.get("/course/:course_id/leaderboards", AuthenticationService.isStudentOrAdminForCourse, CourseController.getCourseLeaderboards);
     
     app.put("/course", AuthenticationService.isLoggedIn, CourseController.insertCourse);
     

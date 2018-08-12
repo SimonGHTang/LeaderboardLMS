@@ -8,7 +8,7 @@ import InvitationListModal from "./modals/invitation-list-modal";
 
 export default class CourseInfoList extends React.Component{
     constructor(props) {
-        super(props);
+        super();
 
         this.state = {
             hideCourseInfoList: false,

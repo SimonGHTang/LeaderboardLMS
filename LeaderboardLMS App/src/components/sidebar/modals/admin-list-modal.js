@@ -21,6 +21,7 @@ export default class AdminListModal extends React.Component{
         this.setState({modal: true});
         this.setState({successMessage: ""});
         this.setState({errorMessage: ""});
+        this.getAdminList(this.props.course_id);
     }
 
     closeModal = () => this.setState({modal: false});

@@ -6,6 +6,9 @@ import AuthAPI from "../services/authentication-services";
 
 import CourseList from "./sidebar/course-list";
 import CourseInfoList from "./sidebar/course-info-list";
+import LeaderboardList from "./sidebar/leaderboard-list";
+
+import Leaderboard from "./leaderboard/leaderboard";
 
 export default class Landing extends React.Component {
     constructor(props) {
@@ -64,6 +67,7 @@ export default class Landing extends React.Component {
                                     <Input placeholder="Search..." />
                                 </Menu.Item>
                                 <Divider/>
+                                    <LeaderboardList course_id={this.state.course_id} selectLeaderboard={this.selectLeaderboard.bind(this)}/>
                                 <Divider/>
                                     <CourseInfoList course_id={this.state.course_id} />
                                 <Divider/>
@@ -72,7 +76,7 @@ export default class Landing extends React.Component {
 
                         <Sidebar.Pusher style={{height: "100vh", width:"80%" }}>
                             <Switch>
-                                
+                                <Route exact path="/landing/leaderboard/:leaderboard_id" render={(props) => <Leaderboard course_id={this.state.course_id} {...props}/>} />
                             </Switch>
                         </Sidebar.Pusher>
                     

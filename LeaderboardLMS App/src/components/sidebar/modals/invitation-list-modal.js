@@ -20,6 +20,7 @@ export default class InvitationListModal extends React.Component {
         this.setState({modal: true});
         this.setState({successMessasge: ""});
         this.setState({errorMessage: ""});
+        this.getInvitationList(this.props.course_id);
     };
 
     closeModal = () => this.setState({modal: false});

@@ -69,6 +69,18 @@ var course_api = {
         return fetch(url, req).then((res) => res.json());
     },
 
+    get_courseLeaderboards(course_id) {
+        var url = api_domain + "/course/" + course_id + "/leaderboards";
+
+        var req = {
+            method: "GET",
+            headers: headers,
+            credentials: "include"
+        };
+
+        return fetch(url, req).then((res) => res.json());
+    },
+
     put_course(courseInfo) {
         var url = api_domain + "/course";
 

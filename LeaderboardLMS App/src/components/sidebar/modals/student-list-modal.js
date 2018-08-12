@@ -21,6 +21,7 @@ export default class StudentListModal extends React.Component {
         this.setState({modal: true });
         this.setState({errorMessage: ""});
         this.setState({successMessage: ""});
+        this.getStudentList(this.props.course_id);
     }
 
     closeModal = () => this.setState({modal: false });

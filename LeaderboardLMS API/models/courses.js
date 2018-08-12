@@ -88,6 +88,18 @@ module.exports = function (sequelize, Sequelize) {
         });
     };
 
+    Courses.getCourseIncludingLeaderboards = async function(course_id, models) {
+        return await this.findOne({
+            where: { course_id: course_id },
+            include: [
+                {
+                    model: models.Leaderboards,
+                    required: false
+                }
+            ]
+        });
+    }
+
     Courses.setUserAsAdmin = async function(course_id, user_id, models) {
         const user = await models.Users.findOne({
             where: { user_id: user_id }
