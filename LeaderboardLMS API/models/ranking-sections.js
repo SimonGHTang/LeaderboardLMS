@@ -14,10 +14,10 @@ module.exports = function(sequelize, Sequelize) {
 
     }, {underscored: true});
 
-    RankingSections.getRankingSection = async function(ranking_section_id, user_id) {
+    RankingSections.getAllRankingSections = async function(leaderboard_id ) {
 
-        return await this.findOne({
-            where: Sequelize.or({ ranking_section_id: ranking_section_id }, { user_id: user_id })
+        return await this.findAll({
+            where: {leaderboard_id: leaderboard_id}
         });
     }
 

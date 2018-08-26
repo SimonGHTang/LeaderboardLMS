@@ -69,7 +69,7 @@ exports.isStudentOrAdminForCourse = function(req, res, next){
 
 exports.isAdminForCourse = function(req, res, next) {
     var course_id = parseInt(req.params.course_id, 10);
-    if(isNaN(course_id)){ Response.error(res, "Error authenticating. Course id is not a number", null); }
+    if(isNaN(course_id)){ Responses.error(res, "Error authenticating. Course id is not a number", null); }
 
     Models.Users.getUserIncludingCourse(null, req.user.email, course_id, Models).then(function(user) {
         if(user.Courses.length !== 0 && user.Courses[0].Roles.rank === "admin") {

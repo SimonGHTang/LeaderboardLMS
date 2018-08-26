@@ -1,17 +1,17 @@
 const Models = require("../models");
 const Responses = require("../res/response");
 
-// exports.getRankingSection = function(req, res) {
-//     const ranking_section_id = parseInt(req.params.ranking_section_id, 10);
+exports.getAllRankingSections = function(req, res) {
+    const leaderboard_id = parseInt(req.params.leaderboard_id, 10);
 
-//     Models.RankingSections.getRankingSection(ranking_section_id).then(function(rankingSection) {
-//         if(!rankingSection) {
-//             Responses.fail(res, "No such rankingSection here", null);
-//         } else {
-//             Responses.success(res, "RankingSection found", rankingSection);
-//         }
-//     });
-// };
+    Models.RankingSections.getRankingSection(leaderboard_id).then(function(rankingSection) {
+        if(!rankingSection) {
+            Responses.fail(res, "No such rankingSection here", null);
+        } else {
+            Responses.success(res, "RankingSection found", rankingSection);
+        }
+    });
+};
 
 exports.editRankingSection = function (req, res) {
     const ranking_section_id = req.params.ranking_section_id;

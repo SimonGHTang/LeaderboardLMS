@@ -26,7 +26,7 @@ var leaderboard_api = {
 
         var body = {
             "name": leaderboardInfo.name,
-            "blurb": leaderboardInfo.blurb,
+            "description": leaderboardInfo.description,
             "weighting": leaderboardInfo.weighting
         }
 
@@ -45,7 +45,7 @@ var leaderboard_api = {
 
         var body = {
             "name": leaderboardInfo.name,
-            "blurb": leaderboardInfo.blurb,
+            "description": leaderboardInfo.description,
             "weighting": leaderboardInfo.weighting
         }
 

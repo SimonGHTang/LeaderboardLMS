@@ -58,7 +58,7 @@ exports.insertRanking = async function (req, res) {
     if(!email) { Responses.error(res, "Email can not be blank", null); return; }
     if(!mark) { Responses.error(res, "Mark cannot be empty", null); return; }
 
-    var user = await Models.Users.getUserIncludingCourse(user_id, email, course_id, Models);
+    var user = await Models.Users.getUserIncludingCourseAndRole(user_id, course_id, Models);
     if(!user){ Responses.fail(res, "This user's email does not exist", null); return; }
     if(!user.Roles){ Responses.fail(res, "This user is not registered to your course", null); return; }
 

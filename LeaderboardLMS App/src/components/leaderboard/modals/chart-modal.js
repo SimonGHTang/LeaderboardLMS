@@ -1,5 +1,5 @@
 import React from "react";
-import{Modal, Button, Icon} from "semantic-ui-react";
+import{Modal, Button, Icon, Segment, Divider} from "semantic-ui-react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 
@@ -114,14 +114,20 @@ export default class ChartModal extends React.Component {
                 </Modal.Header>
                 <Modal.Content>
                     <Modal.Description>
-                        <HighchartsReact
-                            highcharts={Highcharts}
-                            options={this.state.lineChartOptions}
-                        />
-                        <HighchartsReact
-                            highcharts={Highcharts}
-                            options={this.state.barChartOptions}
-                        />
+                        <Segment>
+                            <HighchartsReact
+                                highcharts={Highcharts}
+                                options={this.state.lineChartOptions}
+                            />
+                        </Segment>
+
+                        <Divider/>
+                        <Segment>
+                            <HighchartsReact
+                                highcharts={Highcharts}
+                                options={this.state.barChartOptions}
+                            />
+                        </Segment>
                     </Modal.Description>
                 </Modal.Content>
             </Modal>

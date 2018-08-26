@@ -2,7 +2,19 @@ import React from "react";
 import {Segment, Grid, Header, Divider, Table, Image} from "semantic-ui-react";
 
 import LeaderboardAPI from "../../services/leaderboard-services";
+
 import ChartModal from "./modals/chart-modal";
+import DeleteLeaderboardModal from "./modals/delete-leaderboard-modal";
+import LeaderboardUpdateModal from "./modals/update-leaderboard-modal";
+
+import InsertRankingModal from "./modals/insert-ranking-modal";
+import RankingSectionModal from "./modals/ranking-section-modal";
+import RankingSectionEntryModal from "./modals/ranking-section-entry-modal"
+import DeleteRankingModal from "./modals/delete-ranking-modal";
+import AnonymityModal from "./modals/anonymity-modal";
+
+import RankingMarkEditor from "./editor/ranking-mark-editor";
+import RankingNoteEditor from "./editor/ranking-note-editor";
 
 export default class Leaderboard extends React.Component{
     constructor(props) {
@@ -39,7 +51,7 @@ export default class Leaderboard extends React.Component{
                 
                 var totalMarks = 0;
                 this.setState({leaderboard: res.payload});
-                this.setState({rankingSections: res.payload.rankingSections});
+                this.setState({rankingSections: res.payload.RankingSections});
 
                 for(var i = 0; i < res.payload.Rankings.length; i++) {
                     let r = res.payload.Rankings[i];
@@ -47,19 +59,19 @@ export default class Leaderboard extends React.Component{
 
                     let ranking = (
                         <Table.Row key={i}>
-                            <Table.Cell width={i}>#{i + 1}</Table.Cell>
+                            <Table.Cell width={1}>#{i + 1}</Table.Cell>
                             <Table.Cell width={1}><Image src={r.User.profilePictureLink} size="mini"/> </Table.Cell>
-                            <Table.Cell width={3}>{r.User.username ? r.User.username : r.User.email} </Table.Cell>
-                            <Table.Cell width={7}>{r.note} </Table.Cell>
-                            <Table.Cell width={1}>{r.mark} </Table.Cell>
+                            <Table.Cell width={2}>{r.User.username ? r.User.username : r.User.email} </Table.Cell>
+                            <Table.Cell width={7}><RankingNoteEditor ranking={r} course_id={course_id} leaderboard_id={this.state.leaderboard.id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)}/> </Table.Cell>
+                            <Table.Cell width={2}><RankingMarkEditor ranking={r} course_id={course_id} leaderboard_id={this.state.leaderboard.id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)}/> </Table.Cell>
                             <Table.Cell width={1}>
-                            
+                                <RankingSectionEntryModal course_id={course_id} ranking={r} rankingSections={res.payload.RankingSections} leaderboardName={res.payload.name} />
                             </Table.Cell>
                             <Table.Cell width={1}>
-                            
+                                <AnonymityModal Anonymity={r.AnonymitySetting} course_id={course_id} ranking_id={r.id} />
                             </Table.Cell>
                             <Table.Cell width={1}>
-                            
+                                <DeleteRankingModal ranking={r} course_id={course_id} leaderboard_id={this.state.leaderboard.id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)}/>
                             </Table.Cell>
                         </Table.Row>
                     );
@@ -93,7 +105,7 @@ export default class Leaderboard extends React.Component{
                             <Grid.Column width={7}>
                                 <Segment color="blue" style={{ minHeight: 100}}>
                                     <Header as="h3">Description </Header>
-                                    <p>{this.state.leaderboard.blurb}</p>
+                                    <p>{this.state.leaderboard.description}</p>
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={4}>
@@ -120,7 +132,7 @@ export default class Leaderboard extends React.Component{
                                         <Table.HeaderCell>Marks</Table.HeaderCell>
                                         <Table.HeaderCell>Sections</Table.HeaderCell>
                                         <Table.HeaderCell>Anon</Table.HeaderCell>
-                                        <Table.HeaderCell>Options</Table.HeaderCell>
+                                        <Table.HeaderCell>Delete</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
 
@@ -135,6 +147,12 @@ export default class Leaderboard extends React.Component{
                     <Grid>
                         <Grid.Column width={15}>
                             <ChartModal leaderboard={this.state.leaderboard} />
+                            <LeaderboardUpdateModal leaderboard={this.state.leaderboard} course_id={this.props.course_id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)} />
+
+
+                            <DeleteLeaderboardModal/>
+                            <InsertRankingModal leaderboard_id={this.state.leaderboard.id} course_id={this.props.course_id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)} />
+                            <RankingSectionModal leaderboard_id={this.state.leaderboard.id} course_id={this.props.course_id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)} rankingSections={this.state.rankingSections} />
                         </Grid.Column>
                     </Grid>
                     <Divider/>

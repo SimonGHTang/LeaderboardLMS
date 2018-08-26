@@ -66,6 +66,15 @@ module.exports.startScript = function (){
         profilePictureLink: "https://ih0.redbubble.net/image.387863594.5073/flat,800x800,075,f.jpg"
     }
 
+    userList.user008 = {
+        email: "David@gmail.com",
+        username: "David",
+        password: generateHash("24157817"),
+        status: "offline",
+        activation: "active",
+        profilePictureLink: ""
+    }
+
     return userList;
 };
 
