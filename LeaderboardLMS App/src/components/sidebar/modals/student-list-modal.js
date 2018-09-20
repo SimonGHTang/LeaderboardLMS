@@ -37,7 +37,8 @@ export default class StudentListModal extends React.Component {
     }
 
     getStudentList (course_id) {
-        this.state.studentsList = [];
+        //this.state.studentsList = [];
+        this.setState({studentsList: [] });
 
         CourseAPI.get_CourseIncludingStudents(course_id).then((res) => {
             if(res.status === "success") {

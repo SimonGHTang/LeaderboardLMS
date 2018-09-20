@@ -42,7 +42,7 @@ export default class RankingNoteEditor extends React.Component {
         } else {
             return (
                 <div onClick={this.toggleEditor} className="cursor-pointer">
-                    {this.props.ranking.note ? this.props.ranking.note: <Label disabled>click here to edit</Label>}
+                    {this.props.ranking.note ? this.props.ranking.note : <Label disabled>click here to edit</Label>}
                 </div>
             )
         }

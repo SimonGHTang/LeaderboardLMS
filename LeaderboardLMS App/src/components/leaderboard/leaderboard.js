@@ -9,7 +9,7 @@ import LeaderboardUpdateModal from "./modals/update-leaderboard-modal";
 
 import InsertRankingModal from "./modals/insert-ranking-modal";
 import RankingSectionModal from "./modals/ranking-section-modal";
-import RankingSectionEntryModal from "./modals/ranking-section-entry-modal"
+import RankingSectionEntryModal2 from "./modals/ranking-section-entry-modal"
 import DeleteRankingModal from "./modals/delete-ranking-modal";
 import AnonymityModal from "./modals/anonymity-modal";
 
@@ -45,7 +45,9 @@ export default class Leaderboard extends React.Component{
     }
 
     retrieveLeaderboard(course_id, leaderboard_id) {
-        this.state.rankings = [];
+        // this.state.rankings = [];
+        this.setState({rankings: [] });
+
         LeaderboardAPI.get_leaderboard(course_id, leaderboard_id).then((res) => {
             if(res.status === "success") {
                 
@@ -65,7 +67,7 @@ export default class Leaderboard extends React.Component{
                             <Table.Cell width={7}><RankingNoteEditor ranking={r} course_id={course_id} leaderboard_id={this.state.leaderboard.id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)}/> </Table.Cell>
                             <Table.Cell width={2}><RankingMarkEditor ranking={r} course_id={course_id} leaderboard_id={this.state.leaderboard.id} retrieveLeaderboard={this.retrieveLeaderboard.bind(this)}/> </Table.Cell>
                             <Table.Cell width={1}>
-                                <RankingSectionEntryModal course_id={course_id} ranking={r} rankingSections={res.payload.RankingSections} leaderboardName={res.payload.name} />
+                                <RankingSectionEntryModal2 leaderboard_id={this.state.leaderboard.id} course_id={course_id} ranking={r} rankingSections={res.payload.RankingSections} leaderboardName={res.payload.name} />
                             </Table.Cell>
                             <Table.Cell width={1}>
                                 <AnonymityModal Anonymity={r.AnonymitySetting} course_id={course_id} ranking_id={r.id} />

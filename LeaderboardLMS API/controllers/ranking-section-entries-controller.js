@@ -43,15 +43,15 @@ exports.insertRankingSectionEntry = function (req, res) {
 };
 
 exports.deleteRankingSectionEntry = function (req, res) {
-    const ranking_section_entry_id = req.body.ranking_section_entry_id;
+    const ranking_section_entry_id = req.params.ranking_section_entry_id;
 
     if (isNaN(ranking_section_entry_id)){ Responses.error(res, "Ranking Section Entry ID is not a number", null); return; }
 
-    Models.RankingSectionEntry.deleteRanking(ranking_section_entry_id).then(function(rankingSectionEntry) {
+    Models.RankingSectionEntries.deleteRankingSectionEntry(ranking_section_entry_id).then(function(rankingSectionEntry) {
         if(!rankingSectionEntry) {
             Responses.fail(res, "Cannot delete ranking section entry at this time, try again?", null);
         } else {
-            Responses.success(res, "Ranking section entry deleted", ranking);
+            Responses.success(res, "Ranking section entry deleted", rankingSectionEntry);
         }
     });
 }

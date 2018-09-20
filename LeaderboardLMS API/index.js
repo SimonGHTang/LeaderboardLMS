@@ -48,8 +48,8 @@ require("./routers/ranking-sections-router.js")(App);
 require("./routers/ranking-section-entries-router.js")(App);
 require("./routers/anonymity-setting-router.js")(App);
 
-Models.sequelizeCredentials.sync({ force: true }).then(() => {
-    startScript.startScript();
+Models.sequelizeCredentials.sync({ force: false }).then(() => {
+    // startScript.startScript();
 
     App.listen(11000, () => {
         console.log("Leaderboard LMS API active on port 11000!");

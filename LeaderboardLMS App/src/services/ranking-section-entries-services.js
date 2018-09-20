@@ -22,10 +22,11 @@ var ranking_section_entry_api = {
     },
 
     put_rankingSectionEntry(course_id, ranking_id, rankingSectionEntryInfo){
-        var url = api_domain + "/course/" + course_id + "/ranking/" + ranking_id + "/rankingsectionentry";
+        var url = api_domain + "/course/" + course_id + "/ranking/" + ranking_id + "/rankingSectionEntry";
 
         let body = {
             "mark": rankingSectionEntryInfo.mark,
+            "user_id": rankingSectionEntryInfo.user_id,
             "ranking_section_id": rankingSectionEntryInfo.ranking_section_id
         };
 
@@ -39,10 +40,11 @@ var ranking_section_entry_api = {
         return fetch(url, req).then((res) => res.json());
     },
 
-    post_rankingSectionEntry(course_id, ranking_id, ranking_section_entry_id, rankingSectionEntryInfo){
-        var url = api_domain + "/course/" + course_id + "/ranking/" + ranking_id + "/rankingsectionentry/" + ranking_section_entry_id;
+    post_rankingSectionEntry(course_id, ranking_section_entry_id, rankingSectionEntryInfo){
+        var url = api_domain + "/course/" + course_id + "/ranking/rankingSectionEntry/" + ranking_section_entry_id;
 
         let body = {
+            "ranking_section_entry_id": rankingSectionEntryInfo.ranking_section_entry_id,
             "mark": rankingSectionEntryInfo.mark
         };
 
@@ -56,8 +58,8 @@ var ranking_section_entry_api = {
         return fetch(url, req).then((res) => res.json());
     },
 
-    delete_rankingSectionEntry(course_id, ranking_id, ranking_section_entry_id){
-        var url = api_domain + "/course/" + course_id + "/ranking/" + ranking_id + "/rankingsectionentry/" + ranking_section_entry_id;
+    delete_rankingSectionEntry(course_id, ranking_section_entry_id){
+        var url = api_domain + "/course/" + course_id + "/ranking/rankingSectionEntry/" + ranking_section_entry_id;
 
         var req = {
             method: "DELETE",

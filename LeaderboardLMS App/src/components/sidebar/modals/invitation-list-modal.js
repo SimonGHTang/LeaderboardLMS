@@ -41,7 +41,9 @@ export default class InvitationListModal extends React.Component {
     }
 
     getInvitationList(course_id) {
-        this.state.invitationsList = [];
+        //this.state.invitationsList = [];
+        this.setState({invitationsLists : [] });
+
         InvitationAPI.get_invitations(course_id).then((res) => {
             if(res.status === "success") {
                 for(var i = 0; i < res.payload.length; i++) {

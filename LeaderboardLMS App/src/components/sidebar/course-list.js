@@ -56,8 +56,12 @@ export default class CourseList extends React.Component {
     loadCourses() {
         this.state.courseList = [];
         this.state.menuList = [];
+        // await this.setStateAsync({courseList: [] });
+        // await this.setStateAsync({menuList: [] });
+
         this.loadMenu();
         this.state.courseList = this.state.menuList;
+        // await this.setStateAsync({courseList: this.state.menuList});
 
         UserAPI.get_userIncludingCourses(this.props.user.id).then((res) => {
             for(var i = 0; i < res.payload.Courses.length; i++) {
@@ -87,6 +91,12 @@ export default class CourseList extends React.Component {
     componentWillMount() {
         this.loadMenu();
         this.loadCourses();
+    }
+
+    setStateAsync(state) {
+        return new Promise((resolve) => {
+          this.setState(state, resolve)
+        });
     }
 
     render() {

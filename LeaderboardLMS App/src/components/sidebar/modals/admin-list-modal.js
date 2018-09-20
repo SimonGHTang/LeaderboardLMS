@@ -37,7 +37,9 @@ export default class AdminListModal extends React.Component{
     }
 
     getAdminList(course_id) {
-        this.state.adminsList = [];
+        this.setState({adminsList: [] });
+        //this.state.adminsList = [];
+
         CourseAPI.get_CourseIncludingAdmins(course_id).then((res) => {
             if(res.status === "success") {
                 this.setState({courseName: res.payload[0].name})
